@@ -1,0 +1,79 @@
+name: Capture page gallery
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - "src/**"
+      - "docs/TUTORIAL.md"
+      - "docs/COURSE.md"
+      - ".github/workflows/capture-pages.yml"
+
+permissions:
+  contents: write
+
+jobs:
+  capture:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - name: Install capture browser
+        run: |
+          npm install --no-save --package-lock=false playwright@1.55.0
+          npx playwright install --with-deps chromium
+      - name: Start private demo workspace
+        run: |
+          npm run dev -- --hostname 127.0.0.1 --port 3001 > /tmp/system-factory.log 2>&1 &
+          for attempt in {1..60}; do
+            if curl --fail --silent http://127.0.0.1:3001 >/dev/null; then exit 0; fi
+            sleep 1
+          done
+          cat /tmp/system-factory.log
+          exit 1
+      - name: Capture all application pages
+        run: |
+          mkdir -p docs/images/pages
+          while IFS='|' read -r name route; do
+            npx playwright screenshot --browser chromium --viewport-size "1440,1200" --full-page               "http://127.0.0.1:3001${route}" "docs/images/pages/${name}.png"
+          done <<'ROUTES'
+          01-dashboard|/
+          02-projects|/projects
+          03-new-project|/projects/new
+          04-project-overview|/projects/proj_01
+          05-business-intake|/projects/proj_01/intake
+          06-business-intelligence|/projects/proj_01/intelligence
+          07-revenue-leak-audit|/projects/proj_01/audit
+          08-opportunity-board|/projects/proj_01/opportunities
+          09-offer-builder|/projects/proj_01/offer
+          10-system-builder|/projects/proj_01/system
+          11-skill-studio|/projects/proj_01/skills
+          12-workflow-studio|/projects/proj_01/workflows
+          13-outreach-studio|/projects/proj_01/outreach
+          14-content-studio|/projects/proj_01/content
+          15-local-visibility|/projects/proj_01/visibility
+          16-launch-hub|/projects/proj_01/roadmap
+          17-reporting-hub|/projects/proj_01/reporting
+          18-export-center|/projects/proj_01/export
+          19-workspace-settings|/settings
+          ROUTES
+          test "$(find docs/images/pages -name '*.png' | wc -l)" -eq 19
+      - uses: actions/upload-artifact@v4
+        with:
+          name: system-factory-page-gallery
+          path: docs/images/pages/*.png
+      - name: Commit refreshed page gallery
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add docs/images/pages
+          if git diff --cached --quiet; then exit 0; fi
+          git commit -m "docs: refresh application page gallery [skip ci]"
+          git push
