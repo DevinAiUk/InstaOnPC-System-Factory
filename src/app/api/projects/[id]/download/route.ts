@@ -1,4 +1,4 @@
-import { getProject } from "@/lib/factory/store";
+import { getProject } from "@/lib/factory/repository";
 import { packageFiles, zipBundle, csv } from "@/lib/factory/export";
 import { fail } from "@/lib/factory/http";
 export async function GET(
@@ -6,7 +6,7 @@ export async function GET(
   { params }: { params: Promise<{ id: string }> },
 ) {
   try {
-    const p = getProject((await params).id);
+    const p = await getProject((await params).id);
     if (!p) throw new Error("Project not found");
     const q = new URL(req.url).searchParams;
     const format = q.get("format") || "zip";

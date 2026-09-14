@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { generateAudit } from "@/lib/db-store";
+import { generateAudit } from "@/lib/factory/repository";
 import { fail } from "@/lib/factory/http";
 export async function POST(
   _: Request,

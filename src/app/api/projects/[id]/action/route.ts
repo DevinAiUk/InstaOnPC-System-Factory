@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import { randomUUID } from "node:crypto";
-import { mutate, regenerate, saveVersion } from "@/lib/factory/store";
+import { mutate, regenerate, saveVersion } from "@/lib/factory/repository";
 import {
   assetIssues,
   secretIssues,
@@ -19,8 +19,8 @@ export async function POST(
     if (secretIssues(JSON.stringify(d)).length)
       throw new Error("Remove credentials.");
     if (d.action === "regenerate")
-      return NextResponse.json({ project: regenerate(id, d.assetId, d.revision) });
-    const project = mutate(
+      return NextResponse.json({ project: await regenerate(id, d.assetId, d.revision) });
+    const project = await mutate(
       id,
       (p) => {
         if (d.revision !== undefined && p.revision !== d.revision)

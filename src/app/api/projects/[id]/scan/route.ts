@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import { randomUUID } from "node:crypto";
-import { getProject, mutate } from "@/lib/factory/store";
+import { getProject, mutate } from "@/lib/factory/repository";
 import { scanPublicSite } from "@/lib/factory/scan";
 import { fail } from "@/lib/factory/http";
 export async function POST(
@@ -9,14 +9,14 @@ export async function POST(
 ) {
   try {
     const { id } = await params;
-    const p = getProject(id);
+    const p = await getProject(id);
     if (!p) throw new Error("Project not found");
     if (p.demo)
       throw new Error(
         "Demo domains are fictional. Create a client project for scanning.",
       );
     const source = await scanPublicSite(p.businessProfile!.url);
-    const project = mutate(
+    const project = await mutate(
       id,
       (p) => {
         if (

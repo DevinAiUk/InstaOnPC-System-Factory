@@ -1,4 +1,4 @@
 import { Shell } from "@/components/factory/shell";
-import { getProjects } from "@/lib/factory/store";
+import { getProjects } from "@/lib/factory/repository";
 export const dynamic="force-dynamic";
-export default function Layout({children}:{children:React.ReactNode}){return <Shell projects={getProjects()}>{children}</Shell>;}
+export default async function Layout({children}:{children:React.ReactNode}){return <Shell projects={await getProjects()}>{children}</Shell>;}

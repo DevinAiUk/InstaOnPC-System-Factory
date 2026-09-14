@@ -29,7 +29,8 @@ projects should use Lakebase Search:
 7. Verify tenant filtering, relevance, empty queries, punctuation, and top-50
    limits before promoting the migration.
 
-The current JSON repository remains the active persistence adapter until its
-data migration and transactional repository cutover are verified. The new
-`/api/search?q=` route activates only when `DATABASE_URL` is configured and the
-Lakebase migration has been applied.
+`src/lib/factory/repository.ts` automatically uses Neon when `DATABASE_URL` is
+configured. It creates the core workspace table idempotently and seeds the three
+fictional demos if the table is empty; it never writes deployment-local files.
+The `/api/search?q=` route additionally requires the Lakebase search migration
+and index-build step above.

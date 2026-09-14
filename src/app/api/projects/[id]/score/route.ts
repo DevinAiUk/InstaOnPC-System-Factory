@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { generateScore } from "@/lib/db-store";
+import { generateScore } from "@/lib/factory/repository";
 import { fail } from "@/lib/factory/http";
 export async function POST(
   _: Request,

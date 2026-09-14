@@ -1,10 +1,10 @@
 import { NextResponse } from "next/server";
-import { getProjects, createProject } from "@/lib/factory/store";
+import { getProjects, createProject } from "@/lib/factory/repository";
 import { intakeSchema, secretIssues } from "@/lib/factory/validation";
 import { body, fail } from "@/lib/factory/http";
 export const dynamic = "force-dynamic";
 export async function GET() {
-  return NextResponse.json({ projects: getProjects() });
+  return NextResponse.json({ projects: await getProjects() });
 }
 export async function POST(req: Request) {
   try {
@@ -13,7 +13,7 @@ export async function POST(req: Request) {
     if (secretIssues(JSON.stringify(profile)).length)
       throw new Error("Do not store credentials in the intake.");
     return NextResponse.json(
-      { project: createProject({ businessProfile: profile as any }) },
+      { project: await createProject({ businessProfile: profile as any }) },
       { status: 201 },
     );
   } catch (e) {

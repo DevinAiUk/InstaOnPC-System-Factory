@@ -1,10 +1,10 @@
 # Integration handoff
 
-The delivered application runs as a single-operator Next.js workspace. Its default generator is deterministic and uses guided intake plus manually approved sources. It requires no AI API key or database service to work. Live integrations are intentionally stubs: ChatGPT connector authorization does not transfer into this app.
+The delivered application runs as a single-operator Next.js workspace. Its default generator is deterministic and uses guided intake plus manually approved sources. In hosted environments, configure `DATABASE_URL` to use Neon-backed persistence. Without it, local development and tests use the file adapter. Live integrations are intentionally stubs: ChatGPT connector authorization does not transfer into this app.
 
 ## Data repository
 
-`src/lib/factory/store.ts` owns all page and API reads/writes. It atomically replaces `.factory-data/workspace.json` on disk. Use one Node process and a durable volume. The adapter is not safe for horizontally scaled concurrent writers; replace it before serverless or multi-tenant deployment. Corrupt state raises an error rather than silently resetting data. Back up the data file. No customer data should be committed to Git.
+`src/lib/factory/repository.ts` selects Neon whenever `DATABASE_URL` is configured and uses optimistic revisions to prevent silent concurrent overwrites. An empty database is initialized with the workspace table and fictional demos. `src/lib/factory/store.ts` remains the local/test adapter and writes `.factory-data/workspace.json`; it is never used for hosted persistence when Neon is configured. No customer data should be committed to Git.
 
 `docs/schema.sql` covers User, Organization, Project, BusinessProfile, SourceAsset, EvidenceItem, FactLock, Opportunity, Offer, Recommendation, SkillFile, WorkflowSpec, ContentAtom, ContentAsset, Approval, Integration, ExportPackage, KPIBaseline, KPIReport and AuditLog. The original Drizzle schema remains as a reference. The PostgreSQL schema has not been migrated or tested against a hosted database. Integrate it behind the repository interface with transactional optimistic revisions and authenticated organization scoping.
 

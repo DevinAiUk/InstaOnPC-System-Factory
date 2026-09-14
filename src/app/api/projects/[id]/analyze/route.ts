@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { generateAnalysis } from "@/lib/db-store";
+import { generateAnalysis } from "@/lib/factory/repository";
 import { fail } from "@/lib/factory/http";
 export async function POST(
   _: Request,
