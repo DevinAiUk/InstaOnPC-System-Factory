@@ -1,3 +1,5 @@
+import { sitesEnabled } from "../campaign/storage";
+import * as sites from "./sites-repository";
 import { neon } from "@neondatabase/serverless";
 import { randomUUID } from "node:crypto";
 import type { Project } from "../types";
@@ -62,6 +64,7 @@ async function seedPostgres() {
 }
 
 export async function getProjects(): Promise<FactoryProject[]> {
+  if (!postgresEnabled() && await sitesEnabled()) return sites.getProjects();
   if (!postgresEnabled()) return file.getProjects();
   await ensurePostgres();
   const sql = client();
@@ -74,6 +77,7 @@ export async function getProjects(): Promise<FactoryProject[]> {
 }
 
 export async function getProject(id: string) {
+  if (!postgresEnabled() && await sitesEnabled()) return sites.getProject(id);
   if (!postgresEnabled()) return file.getProject(id);
   await ensurePostgres();
   const sql = client();
@@ -86,6 +90,7 @@ export async function mutate(
   change: (project: FactoryProject) => void,
   action = "Project updated",
 ) {
+  if (!postgresEnabled() && await sitesEnabled()) return sites.mutate(id, change, action);
   if (!postgresEnabled()) return file.mutate(id, change, action);
   const project = await getProject(id);
   if (!project) throw new Error("Project not found");
@@ -115,6 +120,7 @@ export async function mutate(
 }
 
 export async function createProject(data: Partial<Project>) {
+  if (!postgresEnabled() && await sitesEnabled()) return sites.createProject(data);
   if (!postgresEnabled()) return file.createProject(data);
   await ensurePostgres();
   const id = "proj_" + randomUUID().slice(0, 8);
@@ -154,6 +160,7 @@ export async function updateProject(id: string, data: Partial<Project>) {
 }
 
 export async function deleteProject(id: string) {
+  if (!postgresEnabled() && await sitesEnabled()) return sites.deleteProject(id);
   if (!postgresEnabled()) return file.deleteProject(id);
   await ensurePostgres();
   const sql = client();

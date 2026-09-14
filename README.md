@@ -1,3 +1,13 @@
+# InstaOnPC System Factory v1
+
+Private campaign workspace and Local Lead Engine factory. See [v1 operator and production handoff](docs/V1-RELEASE.md) for current setup, functionality, connection requirements and verification.
+
+This fork uses the Sites/Vinext Worker runtime with durable D1 storage. Run `npm ci`, `npm run lint`, `npm test`, and `npm run build`. For built-runtime HTTP verification, run `node scripts/verify-runtime.mjs`. Live AI requires a server-side OpenAI key.
+
+---
+
+## Original project documentation
+
 # InstaOnPC System Factory
 
 A responsive Next.js + TypeScript + Tailwind operator workspace for turning a business intake into a reviewed Local Lead Engine delivery package. Neutral surfaces, a dark sidebar and a teal accent. No generic AI landing page.

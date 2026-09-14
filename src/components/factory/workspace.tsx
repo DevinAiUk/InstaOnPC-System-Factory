@@ -1,4 +1,5 @@
 "use client";
+import { OpportunityRadar } from "@/components/campaign/opportunity-radar";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
@@ -890,6 +891,7 @@ export function Workspace({
                   </div>
                   <h2>{o.name}</h2>
                   <p>{o.problem}</p>
+                  <OpportunityRadar dimensions={o.dimensions}/>
                   <div className="dimension-bars">
                     {o.dimensions.map((d) => (
                       <div key={d.name}>
@@ -1011,10 +1013,9 @@ export function Workspace({
             </div>
             <div className="architecture-parts">
               {[
-                ["01", "Capture", "Website · FAQ · local pages"],
-                ["02", "Qualify", "Service · location · consent"],
-                ["03", "Review", "Owner · uncertainty · approval"],
-                ["04", "Hand off", "CRM · booking draft · reporting"],
+                ["01", "Local visibility", "GBP hygiene · visible-page schema · NAP"],
+                ["02", "Supervised AI front desk", "AI disclosure · intake · deterministic escalation"],
+                ["03", "CRM follow-up", "Owner routing · SLA targets · approved reminders"],
               ].map(([n, t, s]) => (
                 <div key={n}>
                   <span>{n}</span>

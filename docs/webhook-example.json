@@ -1,0 +1,13 @@
+{
+  "schemaVersion": "1.0",
+  "event": "lead.created",
+  "eventId": "832f732c-b568-4f9c-9602-4aa55986dfbf",
+  "lead": {
+    "businessName": "Fictional Bayview Home Services",
+    "city": "St. Petersburg, FL",
+    "website": "https://bayview.example",
+    "service": "AI Front Desk + Local Lead Engine",
+    "agentName": "Devon",
+    "tone": "Professional"
+  }
+}

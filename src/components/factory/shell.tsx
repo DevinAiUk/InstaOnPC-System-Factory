@@ -1,5 +1,6 @@
 "use client";
 import Link from "next/link";
+import {Chatbot} from "@/components/campaign/chatbot";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
 import {
@@ -55,6 +56,7 @@ export function Shell({
   const project = projects.find((p) => p.id === id);
   return (
     <div className="factory-shell">
+      <Chatbot/>
       <a href="#main" className="skip-link">
         Skip to content
       </a>
@@ -101,6 +103,7 @@ export function Shell({
             Projects<span className="nav-count">{projects.length}</span>
           </Link>
         </nav>
+        <Link href="/campaign" onClick={() => setOpen(false)} className={`side-link ${pathname === "/campaign" ? "active" : ""}`}><Target size={17}/>Campaign workspace</Link>
         <div className="sidebar-divider" />
         <div className="workspace-label">
           {project ? "CURRENT PROJECT" : "RECENT PROJECTS"}
@@ -182,7 +185,7 @@ export function Shell({
         </main>
         <footer className="factory-footer">
           <span>InstaOnPC System Factory</span>
-          <span>Review-led delivery · Mock integrations</span>
+          <span>Review-led delivery · Verify before sending</span>
         </footer>
       </div>
     </div>
