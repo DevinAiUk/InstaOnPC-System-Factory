@@ -1,0 +1,10 @@
+import {NextResponse} from 'next/server';
+import {z} from 'zod';
+import {secretIssues} from '@/lib/factory/validation';
+import {body} from '@/lib/factory/http';
+import {allowedDestination,inboundSchema} from '@/lib/campaign/webhook';
+import * as db from '@/lib/campaign/storage';
+export async function GET(){return NextResponse.json({receipts:await db.list('receipt'),inbound:await db.list('inbound'),inboundConfigured:!!process.env.FACTORY_WEBHOOK_SECRET});}
+export async function POST(req:Request){try{const d=await body(req);if(secretIssues(JSON.stringify(d)).length)throw new Error('Remove credentials from payloads.');if(d.action==='test'){const payload=inboundSchema.parse(d.payload);const created=await db.insert(payload.eventId,'inbound',{...payload,receivedAt:new Date().toISOString(),test:true});return NextResponse.json({accepted:true,duplicate:!created,eventId:payload.eventId,test:true});}
+ if(d.action!=='dispatch'||d.confirm!==true)throw new Error('Review the payload and confirm dispatch.');const endpoint=allowedDestination(z.string().max(2000).parse(d.endpoint),process.env.FACTORY_WEBHOOK_ALLOWLIST||'');const id=z.string().uuid().parse(d.deliveryId);if(!await db.acquire('delivery:'+id))throw new Error('This delivery is in progress.');try{const previous=await db.get<{status:number}>(id,'receipt');if(previous)return NextResponse.json({duplicate:true,receipt:previous});await db.rateLimit('webhook',60);const raw=JSON.stringify(d.payload);if(raw.length>50000)throw new Error('Payload too large.');const response=await fetch(endpoint,{method:'POST',redirect:'error',headers:{'Content-Type':'application/json','Idempotency-Key':id},body:raw,signal:AbortSignal.timeout(10000)});await response.body?.cancel();const receipt={id,endpoint,status:response.status,ok:response.ok,createdAt:new Date().toISOString()};await db.put(id,'receipt',receipt);return NextResponse.json({receipt});}finally{await db.release('delivery:'+id);}}
+ catch(e){return NextResponse.json({error:e instanceof Error&&e.message.includes('allowlist')?e.message:'Delivery could not be confirmed. Inspect the destination before retrying.'},{status:400});}}

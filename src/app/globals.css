@@ -2,14 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 :root {
-  --accent: #087e72;
-  --accent-dark: #075b54;
-  --accent-light: #e5f3ef;
-  --ink: #172928;
-  --muted: #667674;
-  --line: #dfe6e3;
-  --paper: #f6f8f7;
-  --sidebar: #132d2b;
+  --accent: #168ce0;
+  --accent-dark: #1178c2;
+  --accent-light: #152c42;
+  --ink: #edf3fb;
+  --muted: #9baec6;
+  --line: #2a3a51;
+  --paper: #0b1120;
+  --sidebar: #0c1728;
   --radius: 12px;
 }
 * {
@@ -116,7 +116,7 @@ textarea {
   border: 1px solid #ccd7d3;
   border-radius: 7px;
   padding: 10px 12px;
-  background: white;
+  background: #111c2e;
   min-width: 0;
   width: 100%;
   color: var(--ink);
@@ -134,7 +134,7 @@ textarea {
 }
 input:disabled,
 textarea:disabled {
-  background: #eff2f0;
+  background: #142438;
 }
 *:focus-visible {
   outline: 2px solid var(--accent);
@@ -171,7 +171,7 @@ a svg {
   display: flex;
   gap: 12px;
   align-items: center;
-  color: #fff;
+  color: #b9cbe1;
   padding: 0 10px 26px;
 }
 .factory-brand b {
@@ -215,7 +215,7 @@ a svg {
 }
 .side-link:hover {
   background: #20413c;
-  color: #fff;
+  color: #b9cbe1;
 }
 .side-link.active {
   background: #2b5047;
@@ -266,8 +266,8 @@ a svg {
   border-radius: 50%;
   display: grid;
   place-items: center;
-  background: #dce8e0;
-  color: #325244;
+  background: #142438;
+  color: #b9cbe1;
   font-size: 12px;
   flex-shrink: 0;
 }
@@ -313,7 +313,7 @@ a svg {
 .topbar {
   height: 72px;
   border-bottom: 1px solid var(--line);
-  background: #fff;
+  background: #111c2e;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -339,7 +339,7 @@ a svg {
   display: flex;
   align-items: center;
   gap: 6px;
-  color: #65756f;
+  color: #b9cbe1;
   font-size: 12px;
 }
 .factory-content {
@@ -385,12 +385,12 @@ a svg {
   justify-content: center;
   gap: 8px;
   font-weight: 500;
-  background: #fff;
+  background: #111c2e;
   white-space: nowrap;
   font-size: 13px;
 }
 .button:hover {
-  background: #edf3ef;
+  background: #142438;
   border-color: #b4c9be;
 }
 .button.primary {
@@ -422,7 +422,7 @@ a svg {
   justify-content: center;
 }
 .icon-btn:hover {
-  background: #e8efeb;
+  background: #142438;
 }
 .stats-grid {
   display: grid;
@@ -436,7 +436,7 @@ a svg {
 .stat-card {
   border: 1px solid var(--line);
   border-radius: 10px;
-  background: white;
+  background: #111c2e;
   padding: 20px 22px;
 }
 .stat-card > div {
@@ -444,7 +444,7 @@ a svg {
   justify-content: space-between;
   font-size: 12px;
   gap: 8px;
-  color: #526760;
+  color: #b9cbe1;
 }
 .stat-card svg {
   color: #79988d;
@@ -467,7 +467,7 @@ a svg {
   justify-content: space-between;
   gap: 30px;
   align-items: center;
-  background: #eaf2ed;
+  background: #142438;
   border: 1px solid #d6e4db;
   border-radius: 10px;
   margin: 26px 0;
@@ -476,7 +476,7 @@ a svg {
 .small-label {
   font-size: 9px;
   letter-spacing: 1.5px;
-  color: #3d6c56;
+  color: #b9cbe1;
   font-weight: 600;
 }
 .band-copy h2 {
@@ -494,7 +494,7 @@ a svg {
 .band-tags span {
   font-size: 10px;
   border: 1px solid #c9dace;
-  color: #43654f;
+  color: #b9cbe1;
   border-radius: 4px;
   padding: 3px 7px;
 }
@@ -512,17 +512,17 @@ a svg {
   font-size: 10px;
 }
 .band-route > div svg {
-  background: #fff;
+  background: #111c2e;
   border: 1px solid #d4e2d8;
   border-radius: 9px;
   width: 44px;
   height: 44px;
   padding: 12px;
-  color: #38664e;
+  color: #b9cbe1;
 }
 .panel {
   border: 1px solid var(--line);
-  background: white;
+  background: #111c2e;
   border-radius: 10px;
   margin-bottom: 24px;
   overflow: hidden;
@@ -553,7 +553,7 @@ a svg {
 .count-label {
   font-size: 11px;
   color: #6d8276;
-  background: #edf3ee;
+  background: #142438;
   border-radius: 5px;
   padding: 3px 7px;
   margin-left: 8px;
@@ -564,7 +564,7 @@ a svg {
   gap: 8px;
   align-items: center;
   border: 1px solid #d8e1dc;
-  background: white;
+  background: #111c2e;
   padding: 0 10px;
   border-radius: 6px;
   color: #82918a;
@@ -596,7 +596,7 @@ a svg {
   letter-spacing: 1px;
   font-weight: 600;
   color: #809087;
-  background: #f9fbfa;
+  background: #142438;
   border-top: 1px solid var(--line);
   border-bottom: 1px solid var(--line);
   padding: 12px 20px;
@@ -611,7 +611,7 @@ a svg {
   border-bottom: 0;
 }
 .project-table tbody tr:hover {
-  background: #fafcfb;
+  background: #142438;
 }
 .business-cell {
   display: flex;
@@ -633,24 +633,24 @@ a svg {
   height: 43px;
   display: grid;
   place-items: center;
-  background: #edf2ef;
+  background: #142438;
   border: 1px solid #e0e7e2;
   border-radius: 8px;
-  color: #4c6858;
+  color: #b9cbe1;
 }
 .business-icon.variant-1 {
-  background: #f2efea;
-  color: #807358;
+  background: #142438;
+  color: #b9cbe1;
 }
 .business-icon.variant-2 {
-  background: #ebeff2;
+  background: #142438;
   color: #657381;
 }
 .stage-badge {
-  color: #64786b;
+  color: #b9cbe1;
   font-size: 11px;
   border: 1px solid #d9e3db;
-  background: #f3f7f3;
+  background: #142438;
   border-radius: 5px;
   padding: 4px 7px;
   text-transform: capitalize;
@@ -664,7 +664,7 @@ a svg {
 }
 .progress-track {
   height: 5px;
-  background: #e8efea;
+  background: #142438;
   border-radius: 5px;
   overflow: hidden;
   min-width: 70px;
@@ -681,7 +681,7 @@ a svg {
   align-items: center;
   gap: 7px;
   font-size: 11px;
-  color: #50715e;
+  color: #b9cbe1;
 }
 .two-column {
   display: grid;
@@ -715,7 +715,7 @@ a svg {
   flex-direction: column;
   gap: 14px;
   font-size: 12px;
-  color: #526d5e;
+  color: #b9cbe1;
 }
 .principle-list > span {
   display: flex;
@@ -733,19 +733,19 @@ a svg {
 }
 .status.draft,
 .status.pending {
-  background: #f0f3f1;
-  color: #64766a;
+  background: #142438;
+  color: #b9cbe1;
 }
 .status.approved {
-  color: #216749;
-  background: #e7f4eb;
+  color: #b9cbe1;
+  background: #142438;
 }
 .status.rejected {
-  color: #a64232;
-  background: #fcebe6;
+  color: #fda4af;
+  background: #142438;
 }
 .project-summary {
-  background: #fff;
+  background: #111c2e;
   border: 1px solid var(--line);
   border-radius: 10px;
   padding: 30px;
@@ -789,12 +789,12 @@ a svg {
   padding: 24px;
   border: 1px solid var(--line);
   border-radius: 10px;
-  background: white;
+  background: #111c2e;
   position: relative;
 }
 .module-card:hover {
   border-color: #9bb6a7;
-  background: #fcfefd;
+  background: #142438;
 }
 .module-card > svg:first-child {
   color: var(--accent);
@@ -824,9 +824,9 @@ a svg {
 }
 .notice {
   padding: 17px 20px;
-  background: #edf4ef;
+  background: #142438;
   border: 1px solid #d6e4da;
-  color: #476756;
+  color: #b9cbe1;
   border-radius: 8px;
   font-size: 13px;
   margin: 20px 0;
@@ -916,7 +916,7 @@ a svg {
 }
 .journey-strip > div {
   padding: 20px;
-  background: #edf4ee;
+  background: #142438;
   border-right: 1px solid #ceded2;
 }
 .journey-strip span {
@@ -930,7 +930,7 @@ a svg {
 }
 .formula-bar {
   padding: 17px 20px;
-  background: #eaf1ec;
+  background: #142438;
   border: 1px solid #d3e0d6;
   border-radius: 9px;
   margin-bottom: 22px;
@@ -942,7 +942,7 @@ a svg {
 .formula-bar > span {
   font-size: 10px;
   letter-spacing: 1px;
-  color: #55775e;
+  color: #b9cbe1;
 }
 .formula-bar code {
   font-size: 13px;
@@ -955,7 +955,7 @@ a svg {
 .opportunity-card {
   display: flex;
   gap: 28px;
-  background: white;
+  background: #111c2e;
   border: 1px solid var(--line);
   border-radius: 10px;
   padding: 28px;
@@ -1015,7 +1015,7 @@ a svg {
 }
 .dimension-bars b {
   font-size: 10px;
-  color: #56725f;
+  color: #b9cbe1;
 }
 .decision-dialog {
   position: fixed;
@@ -1037,7 +1037,7 @@ a svg {
   align-items: center;
   position: sticky;
   top: -30px;
-  background: #fff;
+  background: #111c2e;
   padding: 10px 0;
 }
 .decision-dialog p,
@@ -1055,7 +1055,7 @@ a svg {
 .architecture {
   border: 1px solid #d0dfd4;
   border-radius: 10px;
-  background: #ecf3ee;
+  background: #142438;
   padding: 28px;
   margin-bottom: 30px;
 }
@@ -1072,7 +1072,7 @@ a svg {
   margin-top: 25px;
 }
 .architecture-parts > div {
-  background: white;
+  background: #111c2e;
   border: 1px solid #d8e4db;
   padding: 18px;
   border-radius: 7px;
@@ -1112,7 +1112,7 @@ a svg {
 .asset-list {
   border: 1px solid var(--line);
   padding: 12px;
-  background: white;
+  background: #111c2e;
   border-radius: 9px;
 }
 .asset-list > .search-field {
@@ -1130,10 +1130,10 @@ a svg {
   margin-bottom: 4px;
 }
 .asset-item:hover {
-  background: #f2f6f3;
+  background: #142438;
 }
 .asset-item.selected {
-  background: #e9f3ec;
+  background: #142438;
 }
 .asset-item b {
   font-size: 12px;
@@ -1148,11 +1148,11 @@ a svg {
 }
 .asset-number {
   font-size: 10px;
-  color: #577c65;
+  color: #b9cbe1;
   margin-top: 3px;
 }
 .editor-panel {
-  background: #fff;
+  background: #111c2e;
   border: 1px solid var(--line);
   border-radius: 10px;
   overflow: hidden;
@@ -1180,14 +1180,14 @@ a svg {
   align-items: center;
   justify-content: space-between;
   padding: 12px 20px;
-  background: #fbfcfb;
+  background: #142438;
   border-bottom: 1px solid var(--line);
 }
 .segmented {
   display: flex;
   gap: 3px;
   border-radius: 6px;
-  background: #edf1ee;
+  background: #142438;
   padding: 3px;
 }
 .segmented button {
@@ -1199,9 +1199,9 @@ a svg {
   color: #728076;
 }
 .segmented button.selected {
-  background: white;
+  background: #111c2e;
   box-shadow: 0 1px 3px #0001;
-  color: #2c4e38;
+  color: #b9cbe1;
 }
 .asset-textarea,
 .asset-preview {
@@ -1214,9 +1214,9 @@ a svg {
   font-size: 13px;
   padding: 24px;
   resize: vertical;
-  color: #40544b;
+  color: #b9cbe1;
   margin: 0;
-  background: white;
+  background: #111c2e;
 }
 .asset-preview {
   max-height: 800px;
@@ -1251,9 +1251,9 @@ a svg {
 }
 .review-box {
   padding: 14px 24px;
-  background: #faf4e8;
+  background: #142438;
   font-size: 12px;
-  color: #83652d;
+  color: #b9cbe1;
 }
 .review-box ul {
   margin: 6px 0;
@@ -1263,8 +1263,8 @@ a svg {
   align-items: center;
   gap: 7px;
   font-size: 11px;
-  color: #52835f;
-  background: #f0f7ef;
+  color: #b9cbe1;
+  background: #142438;
   padding: 15px 24px;
 }
 .version-list {
@@ -1291,7 +1291,7 @@ a svg {
   width: 17px;
 }
 .workflow-node {
-  background: white;
+  background: #111c2e;
   border: 1px solid var(--line);
   border-radius: 10px;
   padding: 24px 16px;
@@ -1319,7 +1319,7 @@ a svg {
 }
 .phase-heading {
   padding: 24px;
-  background: #f0f5f1;
+  background: #142438;
   border-bottom: 1px solid var(--line);
 }
 .phase-heading > span {
@@ -1391,7 +1391,7 @@ a svg {
 }
 .export-hero {
   border: 1px solid #b9d0c0;
-  background: #e8f2eb;
+  background: #142438;
   border-radius: 10px;
   padding: 30px;
   display: flex;
@@ -1449,7 +1449,7 @@ a svg {
   max-height: 400px;
   overflow: auto;
   padding: 30px;
-  background: #f8faf8;
+  background: #142438;
   border: 1px solid var(--line);
 }
 .print-document h1 {
@@ -1472,13 +1472,13 @@ a svg {
 }
 .integration-monogram {
   border: 1px solid #d9e5dc;
-  background: #eef4ef;
+  background: #142438;
   border-radius: 8px;
   width: 37px;
   height: 37px;
   display: grid;
   place-items: center;
-  color: #4f765c;
+  color: #b9cbe1;
   margin-bottom: 16px;
 }
 .integration-card p {
@@ -1493,7 +1493,7 @@ a svg {
 }
 .intake-aside {
   padding: 32px;
-  background: #eaf2ec;
+  background: #142438;
   border: 1px solid #d5e1d8;
   border-radius: 12px;
   align-self: start;
@@ -1506,7 +1506,7 @@ a svg {
 .intake-aside ol {
   padding-left: 20px;
   font-size: 13px;
-  color: #51705b;
+  color: #b9cbe1;
   line-height: 2.8;
 }
 .outline-icon {
@@ -1516,7 +1516,7 @@ a svg {
   place-items: center;
   border: 1px solid #9dbaa7;
   border-radius: 10px;
-  color: #4d795c;
+  color: #b9cbe1;
 }
 .aside-note {
   border-top: 1px solid #cadbce;
@@ -1576,8 +1576,8 @@ a svg {
   margin: 0;
 }
 .error-message {
-  color: #ad392a;
-  background: #fff1ed;
+  color: #fda4af;
+  background: #142438;
   padding: 15px 24px;
 }
 .feedback {
@@ -1595,12 +1595,12 @@ a svg {
   border: 0;
 }
 .feedback.success {
-  background: #e9f5ec;
-  color: #376b47;
+  background: #142438;
+  color: #b9cbe1;
 }
 .feedback.error {
-  background: #fff0eb;
-  color: #a84836;
+  background: #142438;
+  color: #fda4af;
 }
 .empty-state {
   text-align: center;
@@ -1612,7 +1612,7 @@ a svg {
 }
 .empty-state h3 {
   font-size: 17px;
-  color: #486b53;
+  color: #b9cbe1;
 }
 .empty-state p {
   font-size: 13px;
@@ -1643,7 +1643,7 @@ a svg {
   left: 260px;
   z-index: 100;
   padding: 10px;
-  background: white;
+  background: #111c2e;
 }
 .skip-link:focus {
   top: 10px;
@@ -1838,7 +1838,7 @@ a svg {
     top: 16px;
     z-index: 45;
     border: 0;
-    background: #fff;
+    background: #111c2e;
     padding: 8px;
     border-radius: 6px;
     color: var(--accent);
@@ -2130,7 +2130,7 @@ a svg {
 }
 @media print {
   body {
-    background: white;
+    background: #111c2e;
     font-size: 12pt;
   }
   .factory-sidebar,
@@ -2169,7 +2169,7 @@ a svg {
     max-height: none;
     overflow: visible;
     border: 0;
-    background: white;
+    background: #111c2e;
     padding: 0;
     font-size: 11pt;
   }
@@ -2195,4 +2195,9 @@ a svg {
   }
 }
 /* Readable operational labels and AA contrast on neutral surfaces. */
-.side-link{font-size:14px}.recent-project{font-size:12px}.page-description,.button,label{font-size:14px}.stat-card>div{font-size:13px}.stat-card p,.section-heading p,.business-cell small,.next-link,.progress-cell,.mode-pill,.asset-item small,.small-note,.fact-list small,.folder-grid small,.integration-card p,.task-owner{font-size:12px;color:#596b61}.project-table th{font-size:11px;color:#596b61}.business-cell b,.asset-item b{font-size:14px}.workspace-label{font-size:11px;color:#abc0b5}.eyebrow,.small-label{font-size:11px}.status{font-size:12px}.side-link.active{color:#f2fff6}.source-row p,.panel.padded>p{font-size:14px}.stat-card strong{margin-top:14px}.project-table td{white-space:normal}.project-table td:last-child{width:40px}.asset-number,.asset-item small,.folder-grid small,.phase-heading small,.task-owner,.fact-list small{color:#596b61}.operator small{color:#b0c6b9}.factory-footer{color:#596b61;font-size:12px}
+.side-link{font-size:14px}.recent-project{font-size:12px}.page-description,.button,label{font-size:14px}.stat-card>div{font-size:13px}.stat-card p,.section-heading p,.business-cell small,.next-link,.progress-cell,.mode-pill,.asset-item small,.small-note,.fact-list small,.folder-grid small,.integration-card p,.task-owner{font-size:12px;color: #b9cbe1}.project-table th{font-size:11px;color: #b9cbe1}.business-cell b,.asset-item b{font-size:14px}.workspace-label{font-size:11px;color:#abc0b5}.eyebrow,.small-label{font-size:11px}.status{font-size:12px}.side-link.active{color:#f2fff6}.source-row p,.panel.padded>p{font-size:14px}.stat-card strong{margin-top:14px}.project-table td{white-space:normal}.project-table td:last-child{width:40px}.asset-number,.asset-item small,.folder-grid small,.phase-heading small,.task-owner,.fact-list small{color: #b9cbe1}.operator small{color:#b0c6b9}.factory-footer{color: #b9cbe1;font-size:12px}
+
+/* v1 readable dark surfaces */
+.panel,.stat-card,.module-card,.asset-list,.editor-panel{background:#111c2e;border-color: #b9cbe1}.topbar{background:#0c1728;border-color: #b9cbe1}.factory-brand{color:#f8fafc}.button.primary{color:white}.button{border-color: #b9cbe1}.factory-content{min-height:85vh}.side-link:hover,.side-link.active{background:#173957;color:#dbefff}.brand-symbol{background:#173957;border-color: #b9cbe1;color:#84caff}.stat-card p,.stat-card>div,.factory-footer,.page-description,.definition-grid dt,.fact-list small,.asset-item small,.folder-grid small,.task-owner,.mode-pill{color:#9baec6}.status{background:#1e3448;color:#acd9f7}.panel input,.panel textarea,.panel select{background:#0d1727;color:#e0ebf9;border-color: #b9cbe1}.asset-textarea,.asset-preview{background:#101b2d;color:#dce9f8}.editor-toolbar,.editor-meta,.editor-actions{background:#111c2e}.dashboard-band,.architecture-band,.export-hero,.notice,.intake-aside{background:#142d3f;border-color: #b9cbe1;color:#c1d8ed}.dashboard-band h2,.architecture-band h2,.export-hero h2{color:#e7f5ff}.button{color:#cce2f4}.module-card h3,.business-cell b{color:#e2ecf8}.project-table th,.project-table tbody tr{background:#111c2e;color:#c4d4e8}.project-table th{color:#9baec6}.project-table tr:hover{background:#172a40}.project-summary{background:#152438}.qa-pass{background:#163329;color:#a7e4ca}.small-note,.section-heading p{color:#9baec6}
+
+@media print{body,.print-document{background:#fff!important;color:#172928!important}.print-document h1,.print-document h2,.print-document p,.print-document pre{color:#172928!important}.chat-launch{display:none!important}}

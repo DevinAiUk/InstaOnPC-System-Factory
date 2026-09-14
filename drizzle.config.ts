@@ -2,7 +2,7 @@ import { defineConfig } from 'drizzle-kit';
 
 export default defineConfig({
   schema: './src/db/schema.ts',
-  out: './drizzle',
+  out: './drizzle-neon',
   dialect: 'postgresql',
   dbCredentials: {
     // Drizzle commands expect DATABASE_URL to be supplied by the shell or host.
