@@ -70,3 +70,7 @@ Public scanning does not execute JavaScript, follow redirects or inspect protect
 Expansion into e-commerce, authority content and operations templates is deferred until three real manual client runs pass review. Fictional demos never count.
 
 See [Integration instructions](docs/INTEGRATIONS.md), [Source reconciliation](docs/SOURCE-RECONCILIATION.md), and [QA report](docs/QA.md).
+
+For the staged Lakebase Postgres and BM25 search migration, see
+[Neon production handoff](docs/NEON.md). Neon uses Lakebase Search rather than
+the deprecated `pg_search` preload for new projects.
