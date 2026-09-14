@@ -1,0 +1,40 @@
+{
+  "name": "instaonpc-system-factory",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "node scripts/dev.mjs",
+    "build": "next build",
+    "start": "next start -p 3001",
+    "lint": "tsc --noEmit",
+    "test": "node --import tsx --test tests/*.test.ts"
+  },
+  "dependencies": {
+    "@ai-sdk/openai": "^4.0.66",
+    "@neondatabase/serverless": "^1.1.0",
+    "ai": "^7.0.99",
+    "clsx": "^2.1.1",
+    "date-fns": "^3.6.0",
+    "drizzle-orm": "^0.45.2",
+    "jszip": "^3.10.1",
+    "lucide-react": "^0.446.0",
+    "next": "^15.3.4",
+    "openai": "^7.15.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "recharts": "^3.1.0",
+    "zod": "^3.23.8"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "@types/pg": "^8.23.1",
+    "@types/react": "^18.3.3",
+    "@types/react-dom": "^18.3.0",
+    "autoprefixer": "^10.4.20",
+    "drizzle-kit": "^0.31.10",
+    "postcss": "^8.4.41",
+    "tailwindcss": "^3.4.10",
+    "tsx": "^4.23.13",
+    "typescript": "^5.5.4"
+  }
+}
