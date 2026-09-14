@@ -111,9 +111,9 @@ export const WEIGHTS = [0.25, 0.2, 0.15, 0.15, 0.15, 0.1];
 export const DIMENSIONS = [
   "Urgency",
   "Financial value",
-  "Frequency",
-  "Buyer access",
-  "Delivery feasibility",
+  "Implementation feasibility",
+  "Staff readiness",
+  "Defensibility & compliance",
   "Evidence quality",
 ];
 export function score(values: number[]) {

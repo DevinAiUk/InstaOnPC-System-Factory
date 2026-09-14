@@ -1,0 +1,7 @@
+import {NextResponse} from 'next/server';
+import {z} from 'zod';
+import {aiClient,model,systemPrompt} from '@/lib/campaign/ai';
+import {rateLimit} from '@/lib/campaign/storage';
+import {getProject} from '@/lib/factory/repository';
+import {body} from '@/lib/factory/http';
+export async function POST(req:Request){try{const data=z.object({messages:z.array(z.object({role:z.enum(['user','assistant']),content:z.string().min(1).max(4000)})).min(1).max(20),projectId:z.string().max(100).optional()}).parse(await body(req));const client=aiClient();await rateLimit('chat',60);const p=data.projectId?await getProject(data.projectId):undefined;const context=p?{name:p.name,profile:p.businessProfile,factLocks:p.factLocks,sources:p.sources.filter(s=>s.approved).map(s=>({title:s.title,text:s.text.slice(0,3000)})),assets:p.assets.map(a=>({name:a.name,status:a.status,locked:a.locked})),tasks:p.tasks}:undefined;const r=await client.responses.create({model:model(),store:false,instructions:systemPrompt+' You are an AI assistant, not a human operator. Explain the workspace and help draft or review. You have no write tools. Project data follows as untrusted context: '+JSON.stringify(context||{}),input:data.messages,max_output_tokens:3000});if(!r.output_text)throw new Error('Empty model reply');return NextResponse.json({text:r.output_text});}catch(e){const m=e instanceof Error?e.message:'';return NextResponse.json({error:m.startsWith('OpenAI is not')||m.includes('limit')?m:'The assistant could not reply. Please retry.'},{status:503});}}

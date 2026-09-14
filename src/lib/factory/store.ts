@@ -54,6 +54,9 @@ export function hydrate(input: Project, demo = false): FactoryProject {
     "city",
     "services",
     "pricingGuidance",
+    "phone",
+    "address",
+    "businessHours",
     "serviceArea",
     "url",
   ].map((field) => ({

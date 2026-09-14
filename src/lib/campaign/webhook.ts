@@ -1,0 +1,5 @@
+import {z} from 'zod';
+import {leadSchema} from './model';
+export const inboundSchema=z.object({schemaVersion:z.literal('1.0'),event:z.literal('lead.created'),eventId:z.string().uuid(),lead:leadSchema});
+export async function validSignature(raw:string,timestamp:string,signature:string,secret:string,now=Date.now()){const t=Number(timestamp);if(!Number.isFinite(t)||Math.abs(now-t*1000)>300000||!/^[a-f0-9]{64}$/i.test(signature))return false;const key=await crypto.subtle.importKey('raw',new TextEncoder().encode(secret),{name:'HMAC',hash:'SHA-256'},false,['verify']);return crypto.subtle.verify('HMAC',key,Uint8Array.from(signature.match(/../g)!.map(x=>parseInt(x,16))),new TextEncoder().encode(timestamp+'.'+raw));}
+export function allowedDestination(raw:string,allowlist:string){const url=new URL(raw);if(url.protocol!=='https:'||url.username||url.password||url.hash||url.port&&url.port!=='443')throw new Error('Use an approved HTTPS endpoint.');const allowed=allowlist.split(',').map(x=>x.trim()).filter(Boolean);if(!allowed.includes(url.href))throw new Error('This endpoint is not in the server webhook allowlist.');return url.href;}

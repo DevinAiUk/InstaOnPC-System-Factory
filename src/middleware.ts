@@ -1,7 +1,8 @@
 import { NextRequest, NextResponse } from "next/server";
 export function middleware(req: NextRequest) {
+  const sites = process.env.FACTORY_HOST === "sites";
   const password = process.env.FACTORY_ACCESS_PASSWORD;
-  if (password) {
+  if (!sites && password) {
     let valid = false;
     try {
       valid =
@@ -14,7 +15,7 @@ export function middleware(req: NextRequest) {
         headers: { "WWW-Authenticate": 'Basic realm="System Factory"' },
       });
   } else if (
-    process.env.NODE_ENV === "production" &&
+    !sites && process.env.NODE_ENV === "production" &&
     process.env.FACTORY_LOCAL_ONLY !== "true"
   )
     return new NextResponse(
