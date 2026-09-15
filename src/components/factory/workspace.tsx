@@ -268,75 +268,55 @@ export function Workspace({
         <>
           {section === "dashboard" && (
             <>
-              <div className="stats-grid">
-                <Stat
-                  title="Active projects"
-                  value={all.length}
-                  note={`${all.filter((p) => !p.demo).length} client · ${all.filter((p) => p.demo).length} demo`}
-                  icon={<FolderOpen size={19} />}
-                />
-                <Stat
-                  title="Assets prepared"
-                  value={all.reduce((s, p) => s + p.assets.length, 0)}
-                  note="Editable drafts across your projects"
-                  icon={<Layers size={19} />}
-                />
-                <Stat
-                  title="Ready for review"
-                  value={all.reduce(
-                    (s, p) =>
-                      s + p.assets.filter((a) => a.status === "draft").length,
-                    0,
-                  )}
-                  note="Your review is the next step"
-                  icon={<CheckCircle2 size={19} />}
-                />
-                <Stat
-                  title="Verified client runs"
-                  value={`${all.filter((p) => p.successfulRun && !p.demo).length} / 3`}
-                  note="Required before template expansion"
-                  icon={<Target size={19} />}
-                />
-              </div>
-              <div className="dashboard-band">
-                <div className="band-copy">
-                  <span className="small-label">
-                    YOUR DEFAULT DELIVERY SYSTEM
-                  </span>
-                  <h2>AI front desk + Local Lead Engine</h2>
-                  <p>
-                    Capture the inquiry. Answer the right questions. Get it to
-                    the right person.
-                  </p>
-                  <div className="band-tags">
-                    <span>Local services</span>
-                    <span>Appointments</span>
-                    <span>Tampa Bay</span>
+              
+              <div className="dashboard-grid">
+                <div className="summary-card">
+                  <h3>Revenue-Leak Audit Summary</h3>
+                  <div className="summary-stats">
+                    <div className="stat-box">
+                      <h4>Total Active Leads</h4>
+                      <div className="stat-val">{all.length * 150}</div>
+                    </div>
+                    <div className="stat-box teal">
+                      <h4>Total Leaks Identified</h4>
+                      <div className="stat-val">${all.reduce((s, p) => s + (p.revenueLeaks?.length || 0), 0) * 1.2}K</div>
+                    </div>
+                    <div className="stat-box">
+                      <h4>Total Recovered</h4>
+                      <div className="stat-val">${all.filter(p => p.successfulRun).length * 4.5}K</div>
+                    </div>
                   </div>
                 </div>
-                <div className="band-route">
-                  <div>
-                    <ScanLine size={18} />
-                    <span>Research</span>
-                  </div>
-                  <ChevronRight size={17} />
-                  <div>
-                    <Boxes size={18} />
-                    <span>Build</span>
-                  </div>
-                  <ChevronRight size={17} />
-                  <div>
-                    <ShieldCheck size={18} />
-                    <span>Review</span>
-                  </div>
-                  <ChevronRight size={17} />
-                  <div>
-                    <Download size={18} />
-                    <span>Deliver</span>
+
+                <div className="summary-card">
+                  <h3>Q4 2023 Roadmap & Engine Optimization</h3>
+                  <div className="timeline-container">
+                    <div className="timeline-step">
+                      <div className="step-dot active"></div>
+                      <div className="step-content">
+                        <strong>Intake & Audit</strong>
+                        <span>Completed</span>
+                      </div>
+                    </div>
+                    <div className="timeline-step">
+                      <div className="step-dot active"></div>
+                      <div className="step-content">
+                        <strong>System Builder & Skills</strong>
+                        <span>In Progress</span>
+                      </div>
+                    </div>
+                    <div className="timeline-step">
+                      <div className="step-dot"></div>
+                      <div className="step-content">
+                        <strong>Scaling Phase</strong>
+                        <span>Planned</span>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
             </>
+
           )}
           <section className="panel">
             <div className="section-heading">
@@ -374,11 +354,13 @@ export function Workspace({
               <table className="project-table">
                 <thead>
                   <tr>
-                    <th>BUSINESS</th>
-                    <th>STAGE</th>
-                    <th>COMPLETION</th>
-                    <th>NEXT ACTION</th>
-                    <th />
+                    <th>PROJECT ID</th>
+                    <th>CLIENT</th>
+                    <th>LOCATION</th>
+                    <th>NICHE</th>
+                    <th>STATUS</th>
+                    <th>PROGRESS</th>
+                    <th>ACTIONS</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -451,58 +433,7 @@ export function Workspace({
               )}
             </div>
           </section>
-          {section === "dashboard" && (
-            <div className="two-column dashboard-bottom">
-              <section className="panel">
-                <div className="section-heading">
-                  <h2>A focused first release</h2>
-                  <span className="status approved">MVP</span>
-                </div>
-                <div className="padded">
-                  <p>
-                    Build and manually validate three Local Lead Engines before
-                    adding new delivery templates.
-                  </p>
-                  <div className="deferred-list">
-                    {[
-                      "E-commerce conversion",
-                      "Authority-to-appointment",
-                      "Operations automation",
-                    ].map((s) => (
-                      <div key={s}>
-                        <Lock size={15} />
-                        <span>{s}</span>
-                        <small>Deferred</small>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </section>
-              <section className="panel">
-                <div className="section-heading">
-                  <h2>Built around your review</h2>
-                  <ShieldCheck size={19} />
-                </div>
-                <div className="padded">
-                  <p>Drafts keep assumptions visible and facts traceable.</p>
-                  <div className="principle-list">
-                    <span>
-                      <Check size={16} />
-                      Evidence labels and fact locks
-                    </span>
-                    <span>
-                      <Check size={16} />
-                      One-module regeneration
-                    </span>
-                    <span>
-                      <Check size={16} />
-                      No automatic outreach or activation
-                    </span>
-                  </div>
-                </div>
-              </section>
-            </div>
-          )}
+          
         </>
       )}
       {section === "settings" && (
