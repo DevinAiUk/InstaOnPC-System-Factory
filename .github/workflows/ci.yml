@@ -23,4 +23,3 @@ jobs:
       - run: npm test
       - run: npm run build
         env:
-          FACTORY_ACCESS_PASSWORD: ci-only-placeholder
