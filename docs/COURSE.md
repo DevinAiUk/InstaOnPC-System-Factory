@@ -1,5 +1,8 @@
 # InstaOnPC System Factory — Operator Certification Course
 
+Email: demo@instaonpc.com
+Password: DemoUser!2026
+
 *A practical curriculum for building, reviewing, and packaging Local Lead Engines for lead-driven local businesses.*
 
 ## Course purpose
