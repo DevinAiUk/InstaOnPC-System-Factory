@@ -10,7 +10,7 @@ The delivered application runs as a single-operator Next.js workspace. Its defau
 
 ## Access
 
-For a hosted operator instance, set `FACTORY_ACCESS_PASSWORD` to a strong secret supplied by your secret manager. HTTP Basic authentication uses username `operator`; terminate TLS at the trusted host. All pages and API routes pass through the same middleware. `npm start` fails closed with HTTP 503 without a password unless `FACTORY_LOCAL_ONLY=true` is explicitly set. That local-only override is for loopback testing; never expose it publicly. This is not multi-user authentication, SSO, or tenant isolation.
+For a hosted operator instance, set `NEXT_PUBLIC_NEON_AUTH_URL` and `NEON_AUTH_SECRET` using a strong secret (at least 32 characters) supplied by your secret manager. The application uses Neon Auth for session management. All pages and API routes pass through the same middleware. The application fails closed at startup without the secret. This is a single-operator environment and is not designed for multi-tenant isolation.
 
 ## Public-site scan
 

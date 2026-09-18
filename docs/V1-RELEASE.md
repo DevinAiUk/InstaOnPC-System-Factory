@@ -20,7 +20,7 @@ The private Sites deployment uses its provisioned D1 database and owner-only pla
 
 Existing Neon project persistence remains available when `DATABASE_URL` is supplied. PostgreSQL migrations are preserved in `drizzle-neon/`; SQLite migrations for this Site live in `drizzle/`. This deployment does not copy, alter, or migrate the user's existing Neon data. Projects are seeded with fictional fixtures. Existing hosted source belongs to the original repository; v1 changes are isolated on the review branch and the private Site source fork.
 
-Outside Sites, configure `FACTORY_ACCESS_PASSWORD` and durable storage. `FACTORY_LOCAL_ONLY` is only for local tests. The campaign features require D1 in this release; the original Next/Neon route is not a drop-in deployment target for campaign APIs.
+Outside Sites, configure Neon Auth (`NEXT_PUBLIC_NEON_AUTH_URL` and `NEON_AUTH_SECRET`) and durable storage. The campaign features require D1 in this release; the original Next/Neon route is not a drop-in deployment target for campaign APIs.
 
 ## Required connections and launch gates
 

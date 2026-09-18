@@ -300,3 +300,13 @@ If any safety, evidence, approval, or export-integrity criterion fails, the lear
 - I can produce grounded outreach and content without automatic sending or publishing.
 - I can plan a staged launch and report observed results truthfully.
 - I can inspect and hand off the export bundle without claiming a live deployment.
+
+## Final Operator Verification Checklist
+
+Before taking this system live to a public-facing URL or processing live client data, verify the following five critical infrastructure gates:
+
+- [ ] **OpenAI Server Key**: Confirm that `OPENAI_API_KEY` is securely stored. The system must fail safely with a 503 error if the key is missing (verified via `verify-runtime.mjs` and `lookup-business` disconnected tests). Run a live provider test for `lookup-business` to ensure the web-search tools function correctly.
+- [ ] **Private Hosting Configuration**: Ensure all 9 required runtime variables (documented in `.env.example`) are set securely in your host's secret manager. Do not deploy with `FACTORY_LOCAL_ONLY=true`.
+- [ ] **Durable Storage**: Consolidate and verify your storage backend. Be aware of the split-brain state between D1 (campaign storage), Neon (Postgres authentication/user metadata), and local JSON (workspace state). Run a test against the `factory_locks` table to ensure concurrent access limits are enforced.
+- [ ] **Webhook Ingress**: If utilizing machine-to-machine ingestion, verify that `FACTORY_WEBHOOK_SECRET` and `FACTORY_WEBHOOK_ALLOWLIST` are set. Ensure end-to-end coverage passes for the signed route and that invalid signatures or duplicate payloads are correctly rejected.
+- [ ] **Authenticated Access & Tests**: Verify that Neon Auth is correctly configured (`NEXT_PUBLIC_NEON_AUTH_URL` and `NEON_AUTH_SECRET`) and that the middleware blocks unauthenticated access to all routes. Do not rely exclusively on Dev Mode screenshots (`mockAuth: true`); run an authenticated browser test against the production build.

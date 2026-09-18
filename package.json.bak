@@ -7,7 +7,7 @@
     "build": "node scripts/run-framework.mjs build",
     "start": "node --import ./scripts/sites-env.mjs ./node_modules/wrangler/bin/wrangler.js dev --config dist/server/wrangler.json --local --persist-to .wrangler/state --ip 127.0.0.1 --inspector-port 0",
     "lint": "tsc --noEmit",
-    "test": "NEON_AUTH_SECRET=test-secret-at-least-32-chars-long-here node --import tsx --test tests/*.test.ts",
+    "test": "node --import tsx --test tests/*.test.ts",
     "build:next": "next build",
     "install:ci": "node scripts/install-ci.mjs"
   },
